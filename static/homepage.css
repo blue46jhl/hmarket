@@ -1,0 +1,23 @@
+.carousel-inner img {
+  margin: auto;
+  min-height: 225px;
+  max-height: 225px;
+}
+
+.carousel-control-next-icon:after
+{
+  content: '>>';
+  font-size: 30px;
+  color: lightblue;
+}
+
+.carousel-control-prev-icon:after {
+  content: '<<';
+  font-size: 30px;
+  color: lightblue;
+}
+
+.jumbotron {
+margin:auto;
+text-align:center;
+}
