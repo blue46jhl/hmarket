@@ -1,0 +1,93 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Upload Item
+{% endblock %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+{% block main %}
+    <form action="/sell" method="post" enctype= "multipart/form-data">
+
+         <form class="form-inline">
+            <div class="form-group">
+            <label for="image_id" class = "col-sm-2 col-form-label"><b>Upload Image</b></label>
+            <div class="col-sm-10">
+            <input type="file" class="form-control-file" id="image_id" name="image" onchange="seeimage()">
+            <img src="" alt= "Your Image" style = "width:200px; height:200px">
+            </div>
+        <!--<div class="text-center">-->
+        <!--    {% if init %}-->
+        <!--        {% if invalidImage %}-->
+        <!--            <div class="alert alert-danger" style="margin-top:18px;">-->
+        <!--                <strong>Error</strong> Your image contain invalid content !-->
+        <!--            </div>-->
+        <!--        {% else %}-->
+        <!--            <div class="alert alert-success" style="margin-top:18px;">-->
+        <!--                <strong>Success!</strong> Your image was upload successfully-->
+        <!--            </div>-->
+        <!--        {% endif %}-->
+        <!--    {% endif %}-->
+        <!--</div>-->
+        <br>
+            <div class="form-group">
+            <label for="title" class="col-sm-2 col-form-label"> <b>Item Title </b></label>
+            <div class="col-sm-5">
+                <input type="text" class="form-control" id="title" name="title" placeholder="Title" maxlength="30" required>
+            </div>
+        <br>
+
+        <form class="form-inline">
+         <label class="col-sm-2" for="inlineFormCustomSelect"><b>Select item type: </b></label>
+         <select class="custom-select mb-2 col-sm-2 mb-sm-0" id="category" name= "category">
+            <option selected>Choose...</option>
+
+            <option value="apparel">Apparel</option>
+            <option value="books">Books</option>
+            <option value="technology">Technology</option>
+             <option value="furniture">Furniture</option>
+            <option value="tickets">Tickets</option>
+            <option value="other">Other</option>
+         </select>
+        <br><br>
+        <div class="form-group">
+            <label for="exampleTextarea" class = "col-sm-2 col-form-label"> <b> Item Description </b> </label>
+            <div class = "col-sm-8">
+            <textarea class="form-control" id="description" name="description" placeholder = "Enter item description (< 10 characters)" rows="3" maxlength="20" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="exampleTextarea" class = "col-sm-2 col-form-label"> <b> Additional Notes </b> </label>
+            <div class = "col-sm-8">
+            <textarea class="form-control" id="notes" name="notes" placeholder = "Enter any additional comments for the buyers" rows="3"></textarea>
+        </div>
+
+        <div class="form-group">
+        <label for="title" class="col-sm-2 col-form-label"> <b>Price</b> </label>
+        <div class="col-sm-5">
+            <input type="float" class="form-control" id="price" name="price" placeholder="Enter selling price" required>
+        </div>
+        <br><br>
+        <center>
+        <button class="btn btn-primary" type="submit">Submit Item To Market</button>
+        </center>
+    </form>
+
+    <script>
+    function seeimage() {
+       var preview = document.querySelector('img'); //selects the query named img
+       var file    = document.querySelector('input[type=file]').files[0]; //sames as here
+       var reader  = new FileReader();
+
+       reader.onloadend = function () {
+           preview.src = reader.result;
+       }
+
+       if (file) {
+           reader.readAsDataURL(file); //reads the data as a URL
+       }
+       else {
+           preview.src = "";
+       }
+    }
+    seeimage();
+    </script>
+
+{% endblock %}

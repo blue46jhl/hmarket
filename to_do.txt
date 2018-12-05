@@ -1,0 +1,20 @@
+
+
+    1. Email Link Verification Article on Flask
+    - http://flask.pocoo.org/snippets/50/
+    - https://stackoverflow.com/questions/45550950/email-confirmation-in-flask-fails
+    - https://realpython.com/handling-email-confirmation-in-flask/
+    - https://github.com/mjhea0/flask-basic-registration
+
+
+    2. Create database structure
+    - User database
+
+    3. Create template for website
+    - HTML, CSS
+
+    4. Create buy/sell function and form
+
+
+    5. User registration/verification form
+    - Javascript (check from Pset8)

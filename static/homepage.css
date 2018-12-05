@@ -1,0 +1,55 @@
+.carousel-inner img {
+  margin: auto;
+  min-height: 225px;
+  max-height: 225px;
+}
+
+.carousel-control-next-icon:after
+{
+  content: '>>';
+  font-size: 30px;
+  color: lightblue;
+}
+
+.carousel-control-prev-icon:after {
+  content: '<<';
+  font-size: 30px;
+  color: lightblue;
+}
+
+.jumbotron {
+margin:auto;
+text-align:center;
+}
+
+.pattern {min-height:200px;}
+
+#stripes13 {
+background: #FF3F3F;
+background:
+linear-gradient(115deg, transparent 75%, rgba(255,255,255,.8) 75%) 0 0,
+linear-gradient(245deg, transparent 75%, rgba(255,255,255,.8) 75%) 0 0,
+linear-gradient(115deg, transparent 75%, rgba(255,255,255,.8) 75%) 7px -15px,
+linear-gradient(245deg, transparent 75%, rgba(255,255,255,.8) 75%) 7px -15px,
+#FF3F3F;
+}
+.center{
+   text-align: center;
+   height:135px;
+}
+
+
+
+#test {
+    background-color: #fff;
+    background-image:
+    linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
+    linear-gradient(#eee .1em, transparent .1em);
+    background-size: 100% 1.2em;
+}
+#checkered{
+  background-color:white;
+  background-image: linear-gradient(90deg, rgba(200,0,0,.5) 50%, transparent 80%),
+  linear-gradient(rgba(200,0,0,.5) 50%, transparent 50%);
+  background-size:50px 50px;
+}

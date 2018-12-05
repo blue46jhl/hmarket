@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block main %}
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+{% for item in item %}
+
+  <div class="jumbotron">
+  <h1 class="display-4">{{item.title}}</h1>
+  <p class="lead"><b> Description: </b>{{item.description}} <b> Price:</b> ${{item.price}} </p>
+  <p> <b> Additional Notes: </b> {{item.notes}}</p>
+  <hr class="my-4">
+  <p> <img class="mr-3" src= "{{ item.image }}" alt="item image"  style = "width:400px; height:300px"></p>
+  <form action="/buy/{{item.id}}" method="POST">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
+      <label class="form-check-label" for="invalidCheck2">
+        Agree to terms and conditions
+      </label>
+    </div>
+  <p class="lead">
+    <button class="btn btn-primary" name= "button" type="submit">Buy!</a> <div class="form-group">
+  </div>
+  </div>
+  </p>
+  </form>
+{% endfor %}
+
+
+{% endblock %}
