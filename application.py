@@ -29,18 +29,6 @@ app = Flask(__name__)
 # db = SQL(os.environ["DATABASE_URL"])
 db = SQL("postgres://hsabnnjlfxmdwq:651a62eb8a4e7ca6414fb9e9f4e47f4c4d14c2633f009839df088f5beff7f644@ec2-54-235-193-0.compute-1.amazonaws.com:5432/d3kou60qiu4jp5")
 
-import urllib.parse 
-import psycopg2
-urllib.parse.uses_netloc.append("postgres")
-url = urllib.parse.urlparse(os.environ["DATABASE_URL"])
-conn = psycopg2.connect(
- database=url.path[1:],
- user=url.username,
- password=url.password,
- host=url.hostname,
- port=url.port
-)
-
 
 # Ensure templates are auto-reloaded
 app.config["TEMPLATES_AUTO_RELOAD"] = True
