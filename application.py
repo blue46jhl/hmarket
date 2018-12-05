@@ -89,7 +89,7 @@ def index():
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
-        result = db.execute("SELECT * FROM user WHERE username = :username",
+        result = db.execute("SELECT * FROM item WHERE username = :username",
                             username=request.form.get("username"))
         print("check")
         if result:
