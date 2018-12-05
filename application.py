@@ -337,4 +337,8 @@ def apparel():
     items = db.execute("SELECT * FROM item WHERE category=:category", category="apparel")
     return render_template("index.html", items = items)
 
+if __name__ == ‘__main__’:
+ app.debug = True
+ port = int(os.environ.get(“PORT”, 5000))
+ app.run(host=’0.0.0.0', port=port)
 
