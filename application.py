@@ -3,7 +3,7 @@ import os
 from cs50 import SQL 
 import SQLAlchemy
 from flask import Flask, flash, jsonify, redirect, render_template, request, session, url_for
-from flask_session import Session
+from flask_session.__init__ import Session
 from tempfile import mkdtemp
 from werkzeug.exceptions import default_exceptions
 from werkzeug.security import check_password_hash, generate_password_hash
