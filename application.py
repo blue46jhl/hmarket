@@ -134,39 +134,12 @@ def register():
 def sell():
     if request.method == "POST":
         file=request.files['image']
-        # filename = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
-
-        # file.save(filename)
-        # invalidImage = False
-
-        # output = client.check('nudity', 'wad', 'celebrities', 'scam', 'face-attributes').set_file(filename)
-
-        # # contains nudity
-        # if output['nudity']['safe'] <= output['nudity']['partial'] and output['nudity']['safe'] <= output['nudity']['raw']:
-        #     invalidImage = True
-        # # contains weapon, alcohol or drugs
-        # if output['weapon'] > 0.2 or output['alcohol'] > 0.2 or output['drugs'] > 0.2:
-        #     invalidImage = True
-        # # contains scammers
-        # if output['scam']['prob'] > 0.85:
-        #     invalidImage = True
-        # # contains celebrities
-        # if 'celebrity' in output:
-        #     if output[0]['prob'] > 0.85:
-        #         invalidImage = True
-        # # contains children
-        # if 'attributes' in output:
-        #     if output['attributes']['minor'] > 0.85:
-        #         invalidImage = True
-
-        # if invalidImage:
-        #     os.remove(filename)
 
         filename = secure_filename(file.filename)
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         reference_url=(url_for('static',filename=filename))
         price = '${:,.2f}'.format(float(request.form.get("price")))
-        db.execute("INSERT INTO item(category, title, description, price, image,notes, seller_id) VALUES (:category, :title, :description, :price, :image, :notes, :seller_id)",
+        db.execute("INSERT INTO item(category, title, description, price, image, notes, seller_id) VALUES (:category, :title, :description, :price, :image, :notes, :seller_id)",
                         category= request.form.get("category"), title=request.form.get("title"),
                         description= request.form.get("description"), price=price, image = reference_url, notes=request.form.get("notes"), seller_id=session["user_id"])
         # return redirect ("/", invalidImage=invalidImage, init=True)
@@ -199,7 +172,7 @@ def buy(u_id):
 @app.route("/myitems", methods=["GET", "POST"])
 def myitems():
     if request.method=="POST":
-        item=db.execute("SELECT * FROM item where seller_id=:user", user=session["user_id"])
+        item=db.execute("SELECT * FROM item where seller_id=:seller_user", seller_user=session["user_id"])
         print(item)
         selected=request.form.getlist('item')
         for value in selected:
@@ -209,7 +182,7 @@ def myitems():
         #         db.execute("DELETE from item where id=:u_id", u_id=item["id"])
         return redirect("/")
     else:
-        item=db.execute("SELECT * FROM item where seller_id=:user", user=session["user_id"])
+        item=db.execute("SELECT * FROM item where seller_id=:seller_user", seller_user=session["user_id"])
         return render_template("myitems.html", item=item)
 
 # @app.route("/cart", methods =["GET", "POST"])
