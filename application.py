@@ -1,8 +1,10 @@
 import os
-from cs50 import SQL
-import sqlalchemy
+
+from cs50 import SQL 
+import SQLAlchemy
 from flask import Flask, flash, jsonify, redirect, render_template, request, session, url_for
-from flask_session import Session
+from flask_session.__init__ import Session
+
 from tempfile import mkdtemp
 from werkzeug.exceptions import default_exceptions
 from werkzeug.security import check_password_hash, generate_password_hash
@@ -16,6 +18,7 @@ import re
 app = Flask(__name__)
 # client = SightengineClient('1430167149', 'HGWoQTvgiFjhZq5tT8uW')
 
+#ASdasd
 #Setting up database:
 
 #Need to install "pip install psycopg2-binary"
@@ -30,6 +33,10 @@ app = Flask(__name__)
 db = SQL("postgres://hsabnnjlfxmdwq:651a62eb8a4e7ca6414fb9e9f4e47f4c4d14c2633f009839df088f5beff7f644@ec2-54-235-193-0.compute-1.amazonaws.com:5432/d3kou60qiu4jp5")
 # db = SQL("postgres://hsabnnjlfxmdwq:651a62eb8a4e7ca6414fb9e9f4e47f4c4d14c2633f009839df088f5beff7f644@ec2-54-235-193-0.compute-1.amazonaws.com:5432/d3kou60qiu4jp5")
 
+#db = SQL("postgres://hsabnnjlfxmdwq:651a62eb8a4e7ca6414fb9e9f4e47f4c4d14c2633f009839df088f5beff7f644@ec2-54-235-193-0.compute-1.amazonaws.com:5432/d3kou60qiu4jp5")
+#DATABASE_URL = os.environ['DATABASE_URL']
+#conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+#db. = conn.cursor()
 
 # Ensure templates are auto-reloaded
 app.config["TEMPLATES_AUTO_RELOAD"] = True
@@ -79,7 +86,9 @@ def index():
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
+
         result = db.execute("SELECT * FROM user WHERE username = :username",
+
                             username=request.form.get("username"))
         print("check")
         if result:
@@ -365,5 +374,6 @@ if __name__ == '__main__':
             return None
         except Exception as e:
             raise RuntimeError(e)
+
 
 
