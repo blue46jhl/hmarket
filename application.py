@@ -18,7 +18,7 @@ app = Flask(__name__)
 # client = SightengineClient('1430167149', 'HGWoQTvgiFjhZq5tT8uW')
 
 #Setting up database:
-
+import psycopg2-binary
 #Need to install "pip install psycopg2-binary"
 
 # pip freeze > requirements.txt
@@ -28,12 +28,12 @@ app = Flask(__name__)
 # db = SQLAlchemy(app)
 
 #DATABASE_URL= "postgres://hsabnnjlfxmdwq:651a62eb8a4e7ca6414fb9e9f4e47f4c4d14c2633f009839df088f5beff7f644@ec2-54-235-193-0.compute-1.amazonaws.com:5432/d3kou60qiu4jp5"
-db = SQL("postgres://hsabnnjlfxmdwq:651a62eb8a4e7ca6414fb9e9f4e47f4c4d14c2633f009839df088f5beff7f644@ec2-54-235-193-0.compute-1.amazonaws.com:5432/d3kou60qiu4jp5")
+#db = SQL("postgres://hsabnnjlfxmdwq:651a62eb8a4e7ca6414fb9e9f4e47f4c4d14c2633f009839df088f5beff7f644@ec2-54-235-193-0.compute-1.amazonaws.com:5432/d3kou60qiu4jp5")
 #DATABASE_URL = os.environ['DATABASE_URL']
 #conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 #db. = conn.cursor()
 
-
+db = SQL(os.environ.get("DATABASE_URL") 
 # Ensure templates are auto-reloaded
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 
