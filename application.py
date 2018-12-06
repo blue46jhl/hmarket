@@ -49,7 +49,7 @@ def after_request(response):
     response.headers["Pragma"] = "no-cache"
     return response
 
-UPLOAD_FOLDER = '/home/ubuntu/workspace/Hmarket/project/static/'
+UPLOAD_FOLDER = '/Users/jameslee/Downloads/hmarket/project/static'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 def allowed_file(filename):
     return '.' in filename and \
@@ -201,7 +201,7 @@ def confirm_email(token):
     except:
         redirect(url_for('unconfirmed'))
     print(email)
-    user = db.execute("SELECT * FROM users WHERE username = :email", email=email)
+    user = db.execute("SELECT * FROM users WHERE username = :email::text", email=email)
     print(user)
     #if (user.status=True):
         #print("already confirmed!")
