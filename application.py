@@ -129,7 +129,7 @@ def register():
 
 
 @app.route("/sell", methods=["GET","POST"])
-#@login_required
+@login_required
 def sell():
     if request.method == "POST":
         file=request.files['image']
@@ -148,6 +148,7 @@ def sell():
 
 
 @app.route("/buy/<u_id>", methods=["GET", "POST"])
+@login_required
 def buy(u_id):
     if request.method== "POST":
         print("check")
@@ -169,6 +170,7 @@ def buy(u_id):
         return render_template("buy.html", item=item)
 
 @app.route("/myitems", methods=["GET", "POST"])
+@login_required
 def myitems():
     if request.method=="POST":
         item=db.execute("SELECT * FROM item where seller_id=:seller_user", seller_user=session["user_id"])
