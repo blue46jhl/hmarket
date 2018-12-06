@@ -90,7 +90,6 @@ def register():
         result = db.execute("SELECT * FROM users WHERE username = :username",
 
                             username=request.form.get("username"))
-        print("check")
         if result:
              flash("Username is already taken! Please try again.")
              return render_template("register.html")
