@@ -1,5 +1,5 @@
 import os
-from library50 import cs50
+from cs50 import SQL
 from flask import Flask, flash, jsonify, redirect, render_template, request, session, url_for
 from flask_session import Session
 from tempfile import mkdtemp
@@ -26,7 +26,7 @@ app = Flask(__name__)
 # db = SQLAlchemy(app)
 
 
-db = SQL(os.environ["DATABASE_URL"])
+db = SQL("postgres://hsabnnjlfxmdwq:651a62eb8a4e7ca6414fb9e9f4e47f4c4d14c2633f009839df088f5beff7f644@ec2-54-235-193-0.compute-1.amazonaws.com:5432/d3kou60qiu4jp5")
 # db = SQL("postgres://hsabnnjlfxmdwq:651a62eb8a4e7ca6414fb9e9f4e47f4c4d14c2633f009839df088f5beff7f644@ec2-54-235-193-0.compute-1.amazonaws.com:5432/d3kou60qiu4jp5")
 
 

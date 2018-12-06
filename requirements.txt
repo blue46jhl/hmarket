@@ -4,11 +4,14 @@ cs50==2.4.4
 Django==2.1.2
 Flask==1.0.2
 Flask-Mail==0.9.1
+Flask-OAuth==0.13
 Flask-Session==0.3.1
 gunicorn==19.9.0
+httplib2==0.12.0
 itsdangerous==1.1.0
 Jinja2==2.10
 MarkupSafe==1.1.0
+oauth2==1.9.0.post1
 psycopg2-binary==2.7.6.1
 pytz==2018.5
 SQLAlchemy==1.2.14
