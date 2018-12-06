@@ -87,7 +87,7 @@ def index():
 def register():
     if request.method == "POST":
 
-        result = db.execute("SELECT * FROM "user" WHERE username = :username",
+        result = db.execute("SELECT * FROM users WHERE username = :username",
 
                             username=request.form.get("username"))
         print("check")
@@ -115,7 +115,7 @@ def register():
         if not password == confirm_password:
             flash("Passwords are not identical!")
             return render_template("register.html")
-        db.execute("INSERT INTO "user"(username, hash,status) VALUES (:username, :hash, :status)", username=request.form.get("username"),hash=generate_password_hash(request.form.get("password")), status=0)
+        db.execute("INSERT INTO users(username, hash,status) VALUES (:username, :hash, :status)", username=request.form.get("username"),hash=generate_password_hash(request.form.get("password")), status=0)
         token=encrypt(username)
         email=token
         print(token)
@@ -227,14 +227,14 @@ def confirm_email(token):
     except:
         redirect(url_for('unconfirmed'))
     print(email)
-    user = db.execute("SELECT * FROM "user" WHERE username = :email", email=email)
+    user = db.execute("SELECT * FROM users WHERE username = :email", email=email)
     print(user)
     #if (user.status=True):
         #print("already confirmed!")
     #else:
         #user.status= True
     user[0]["status"] = 1
-    db.execute("UPDATE "user" SET status = :new_status", new_status = user[0]["status"])
+    db.execute("UPDATE users SET status = :new_status", new_status = user[0]["status"])
     return redirect(url_for("login"))
 
 @app.route('/unconfirmed')
@@ -280,7 +280,7 @@ def login():
             return render_template("login.html")
 
         # Query database for username
-        rows = db.execute("SELECT * FROM "user" WHERE username = :username",
+        rows = db.execute("SELECT * FROM users WHERE username = :username",
                           username=request.form.get("username"))
 
         if len(rows) != 1 or not check_password_hash(rows[0]["hash"], request.form.get("password")):
